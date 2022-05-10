@@ -61,12 +61,27 @@ void test_generate_entropy_from_random_generator_word_count_error(void) {
     TEST_ASSERT_EQUAL_HEX32(BIP39_INVALID_WORD_COUNT, error);
 }
 
+void wallet_test_ibl(void) {
+    static char *address;
+    static char *rootkey;
+
+    const char* mnemonics = "play capable stable giant vintage text usage divide benefit hire grocery luggage afford double expire";
+    const char* password  = "infinitowallet";
+
+    // rootkey = create_rootkey_from_entropy(mnemonics, password, strlen(password));
+    rootkey = create_rootkey(mnemonics, password);
+    
+
+    printf("rootkey: %s\n", rootkey);
+}
+
 int main(void) {
     UNITY_BEGIN();
-    RUN_TEST(test_generate_entropy_from_mnemonics);
+    /* RUN_TEST(test_generate_entropy_from_mnemonics);
     RUN_TEST(test_generate_entropy_from_mnemonics_error_code_invalid_word);
     RUN_TEST(test_generate_entropy_from_mnemonics_invalid_checksum);
     RUN_TEST(test_generate_entropy_from_random_generator);
-    RUN_TEST(test_generate_entropy_from_random_generator_word_count_error);
+    RUN_TEST(test_generate_entropy_from_random_generator_word_count_error); */
+    RUN_TEST(wallet_test_ibl);
     return UNITY_END();
 }

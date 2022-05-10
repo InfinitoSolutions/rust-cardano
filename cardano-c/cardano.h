@@ -674,6 +674,7 @@ void cardano_block_delete_hash(char *hash);
 *\relatesalso cardano_block_header
 */
 void cardano_block_header_delete(cardano_block_header *header);
+char *create_rootkey(const char* mnemonics, const char* password);
 
 #ifdef __cplusplus
 }
